@@ -6,43 +6,48 @@ import 'package:transparent_image/transparent_image.dart';
 
 class PostWidget extends StatelessWidget {
   final Post post;
+  final void Function(Post) onTap;
 
   bool get _hasImage => post.imageLink != null;
 
   const PostWidget({ 
     required this.post,
+    required this.onTap,
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(8),
-    decoration: BoxDecoration(
-      color: AppColor.postBackground,
-      border: Border.all(
-        color: AppColor.postBorder,
-        width: 1,
-      ),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          post.title,
-          style: GoogleFonts.ibmPlexSans(
-            color: AppColor.postTitle,
-            fontWeight: FontWeight.w500,
-            fontSize: 18,
-          ),
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: () => onTap(post),
+    child: Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: AppColor.postBackground,
+        border: Border.all(
+          color: AppColor.postBorder,
+          width: 1,
         ),
-        if (_hasImage) ...[
-          const SizedBox(height: 8),
-          FadeInImage(
-            placeholder: MemoryImage(kTransparentImage), 
-            image: NetworkImage(post.imageLink!),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            post.title,
+            style: GoogleFonts.ibmPlexSans(
+              color: AppColor.postTitle,
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
+            ),
           ),
+          if (_hasImage) ...[
+            const SizedBox(height: 8),
+            FadeInImage(
+              placeholder: MemoryImage(kTransparentImage), 
+              image: NetworkImage(post.imageLink!),
+            ),
+          ],
         ],
-      ],
+      ),
     ),
   );
 }

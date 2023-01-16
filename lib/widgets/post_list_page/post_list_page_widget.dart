@@ -3,6 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redditoster/common/app_color.dart';
 import 'package:redditoster/models/actions/load_posts_action.dart';
 import 'package:redditoster/models/app_state/app_state.dart';
+import 'package:redditoster/models/app_state/post.dart';
+import 'package:redditoster/widgets/post_detail_page/post_detail_page_widget.dart';
 import 'package:redditoster/widgets/post_list_page/loader_widget.dart';
 import 'package:redditoster/widgets/post_list_page/post_list_widget.dart';
 
@@ -23,6 +25,7 @@ class PostListPageWidget extends StatelessWidget {
           return PostListWidget(
             posts: store.state.posts.toList(),
             onRefresh: () => _onRefresh(store.dispatch),
+            onTap: (post) => _onTap(post, context),
           );
         },
       ),
@@ -31,4 +34,9 @@ class PostListPageWidget extends StatelessWidget {
 
   Future<void> _onRefresh(dynamic Function(dynamic) dispatch) async =>
     dispatch(const LoadPostsAction());
+
+  void _onTap(Post post, BuildContext context) =>
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => PostDetailPageWidget(post: post)
+    ));
 }

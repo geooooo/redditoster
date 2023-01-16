@@ -6,10 +6,12 @@ import 'package:redditoster/widgets/post_list_page/post_widget.dart';
 class PostListWidget extends StatelessWidget {
   final List<Post> posts;
   final Future<void> Function() onRefresh;
+  final void Function(Post) onTap;
 
   const PostListWidget({ 
     required this.posts,
     required this.onRefresh,
+    required this.onTap,
     super.key,
   });
 
@@ -25,6 +27,7 @@ class PostListWidget extends StatelessWidget {
         itemBuilder: (context, index) => PostWidget(
           key: ValueKey(posts[index].id),
           post: posts[index],
+          onTap: onTap,
         ),
         separatorBuilder: (context, index) => const SizedBox(height: 10),
       ),
