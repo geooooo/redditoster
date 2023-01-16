@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:redditoster/models/api/post_dto.dart';
+import 'package:redditoster/models/api/load_posts_response.dart';
 
 class HttpService {
   final Dio _dio;
 
   HttpService(this._dio);
   
-  Future<List<PostDto>> loadPosts() async {
+  Future<LoadPostsResponse> loadPosts() async {
     final response = await _dio.get('https://reddit.com/r/flutterdev/new.json');
-    response.data;
-    return [];
+    return LoadPostsResponse.fromJson(response.data);
   }
 }
