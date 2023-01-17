@@ -20,7 +20,7 @@ class MiddlewareService {
         final posts = await _postService.loadPosts();
         return LoadPostsSuccessAction(posts);
       } on Exception {
-        await Future<void>.delayed(const Duration(seconds: 1));
+        await Future<void>.delayed(const Duration(seconds: 5));
         return const LoadPostsAction();
       }
     });

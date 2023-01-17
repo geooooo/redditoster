@@ -44,6 +44,7 @@ class PostWidget extends StatelessWidget {
             FadeInImage(
               placeholder: MemoryImage(kTransparentImage), 
               image: NetworkImage(post.imageLink!),
+              imageErrorBuilder: (context, error, stackTrace) => const SizedBox(),
             ),
           ],
         ],
