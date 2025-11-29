@@ -1,19 +1,15 @@
 # redditoster
 
-Тестовое задание.
+Test task.
 
-Нужно написать flutter-приложение для просмотра постов в разделе FlutterDev на Reddit.
+You need to write a Flutter app to view posts in the FlutterDev subreddit.
 
-Ссылка для получения постов - reddit.com/r/flutterdev/new.json
+Link to retrieve posts: reddit.com/r/flutterdev/new.json
 
-1) Главный экран
-Список из 25 постов, в каждой ячейке списка выводится картинка поста (thumbnail) и заголовок (title). Если thumbnail пустой, то выводится только title.
-На главном экране есть возможность сделать жест "Pull to refresh" и заново загрузить 25 постов. Если в ответе пришли новые посты, то мы помещаем их в начало списка. Если в ответе пришли посты, которые уже были, то мы должны обновить информацию о них.
-При нажатии на ячейку списка откроется экран с подробной информацией о посте
+Main screen: A list of 25 posts. Each list cell displays a post image (thumbnail) and title. If the thumbnail is empty, only the title is displayed. The main screen allows you to perform a "Pull to refresh" gesture to reload the 25 posts. If the response contains new posts, we add them to the top of the list. If the response contains existing posts, we need to update their information. Tapping a list cell opens a screen with detailed information about the post.
 
-2) Экран поста
-На экране подробная информация о посте: title, количество "плюсов" (ups), текст поста (selftext)
+Post screen: This screen displays detailed information about the post: title, number of upvotes, and post text (selftext).
 
-3) Приложение должно кешировать данные и без доступа в интернет показывать последние загруженные посты пользователя.
+The application should cache data and display the user's most recently loaded posts without internet access.
 
-Ограничения на использование внешних библиотек нет. Получившийся проект нужно загрузить на github в публичный репозиторий.
+There are no restrictions on using external libraries. The resulting project should be uploaded to a public repository on GitHub.
